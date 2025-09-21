@@ -1,0 +1,564 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #0a192f; /* Dark navy blue */
+    color: #e6f1ff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    flex: 1;
+}
+
+/* Navigation */
+.nav-button {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    background: #64ffda;
+    color: #0a192f;
+    border: none;
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+    display: inline-block;
+    z-index: 10;
+}
+
+.nav-button:hover {
+    background: #0a192f;
+    color: #64ffda;
+    outline: 2px solid #64ffda;
+}
+
+header {
+    text-align: center;
+    padding: 30px 0;
+    margin-top: 20px;
+}
+
+header h1 {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+    color: #64ffda;
+}
+
+header p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    opacity: 0.9;
+    color: #ccd6f6;
+}
+
+.app-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.upload-section, .results-section {
+    flex: 1;
+    min-width: 300px;
+    background: #112240; /* Darker blue - same for both sections */
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    color: #64ffda;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgba(100, 255, 218, 0.3);
+}
+
+.upload-area {
+    border: 3px dashed #64ffda;
+    border-radius: 10px;
+    padding: 40px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-bottom: 25px;
+    background: rgba(10, 25, 47, 0.3);
+}
+
+.upload-area:hover {
+    background-color: rgba(100, 255, 218, 0.1);
+    border-color: #0a192f;
+}
+
+.upload-icon {
+    font-size: 60px;
+    color: #64ffda;
+    margin-bottom: 15px;
+}
+
+.upload-text {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: #ccd6f6;
+}
+
+.upload-btn {
+    background: #64ffda;
+    color: #0a192f;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.upload-btn:hover {
+    background: #0a192f;
+    color: #64ffda;
+}
+
+.file-info {
+    margin-top: 15px;
+    font-style: italic;
+    color: #8892b0;
+}
+
+.file-input {
+    display: none;
+}
+
+.progress-area {
+    margin-top: 20px;
+    display: none;
+}
+
+.progress-bar {
+    height: 10px;
+    width: 100%;
+    background: rgba(10, 25, 47, 0.5);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #64ffda, #0a192f);
+    transition: width 0.3s;
+}
+
+.progress-status {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    color: #8892b0;
+}
+
+.analyze-btn {
+    display: block;
+    width: 100%;
+    background: #64ffda;
+    color: #0a192f;
+    border: none;
+    padding: 15px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 20px;
+}
+
+.analyze-btn:hover {
+    background: #0a192f;
+    color: #64ffda;
+    outline: 2px solid #64ffda;
+}
+
+.analyze-btn:disabled {
+    background: #495670;
+    cursor: not-allowed;
+    color: #a8b2d1;
+}
+
+.results-placeholder {
+    text-align: center;
+    color: #ccd6f6;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.results-icon {
+    font-size: 80px;
+    color: #64ffda;
+    margin-bottom: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+.results-text {
+    font-size: 1.2rem;
+    max-width: 300px;
+    text-align: center;
+}
+
+.analysis-progress {
+    margin-top: 20px;
+    display: none;
+}
+
+.analysis-text {
+    text-align: center;
+    color: #64ffda;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+footer {
+    text-align: center;
+    color: #ccd6f6;
+    margin-top: 50px;
+    padding: 20px;
+    opacity: 0.8;
+}
+
+/* Directions Page */
+#directions-page {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+#directions-page h1 {
+    font-size: 3rem;
+    color: #64ffda;
+    margin-bottom: 40px;
+}
+
+.directions-content {
+    background: #112240;
+    border-radius: 12px;
+    padding: 40px;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.step {
+    margin-bottom: 30px;
+    padding-left: 30px;
+    position: relative;
+}
+
+.step-number {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: #64ffda;
+    color: #0a192f;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.step h3 {
+    color: #64ffda;
+    margin-bottom: 10px;
+    font-size: 1.3rem;
+}
+
+.step p {
+    color: #ccd6f6;
+    line-height: 1.6;
+}
+
+/* Page transitions */
+#main-content, #directions-page {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+#main-content.hidden, #directions-page.hidden {
+    opacity: 0;
+    transform: translateY(20px);
+    display: none;
+}
+
+#main-content.visible, #directions-page.visible {
+    opacity: 1;
+    transform: translateY(0);
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .app-container {
+        flex-direction: column;
+    }
+    
+    header h1 {
+        font-size: 2.5rem;
+    }
+    
+    .nav-button {
+        position: relative;
+        top: 0;
+        left: 0;
+        margin-bottom: 20px;
+    }
+    
+    .directions-content {
+        padding: 20px;
+    }
+}
+/* Add these styles for downward sliding page transitions */
+#main-content, #directions-page {
+    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.6s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+}
+
+#main-content.hidden {
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+}
+
+#main-content.visible {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: all;
+}
+
+#directions-page.hidden {
+    transform: translateY(100%);
+    opacity: 0;
+    pointer-events: none;
+}
+
+#directions-page.visible {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* Ensure body has relative positioning for absolute children */
+body {
+    position: relative;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Keep the nav button fixed so it stays during transitions */
+.nav-button {
+    position: fixed;
+    top: 30px;
+    left: 30px;
+    z-index: 1000;
+}
+
+/* Add a smooth transition to the button text change */
+.nav-button {
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+}
+
+.nav-button:hover {
+    transform: translateY(-2px);
+}
+
+/* Add a subtle shadow to pages for depth */
+.upload-section, .results-section, .directions-content {
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Enhance the progress bars with animation */
+.progress {
+    transition: width 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Add animation to the section titles */
+.section-title {
+    position: relative;
+    overflow: hidden;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, #64ffda, transparent);
+    transform: translateX(-100%);
+    transition: transform 0.5s ease;
+}
+
+.visible .section-title::after {
+    transform: translateX(0);
+}
+/* Add a subtle gradient to the background for more visual interest */
+body {
+    background: linear-gradient(135deg, #0a192f 0%, #0d2039 100%);
+}
+
+/* Add a slight scale effect to the pages for more dimensionality */
+#main-content.visible, #directions-page.visible {
+    transform: translateY(0) scale(1);
+}
+
+#main-content.hidden {
+    transform: translateY(-100%) scale(0.98);
+}
+
+#directions-page.hidden {
+    transform: translateY(100%) scale(0.98);
+}
+
+/* Add a transition delay to elements for staggered animations */
+.upload-area, .progress-area, .analyze-btn, .results-placeholder, .step {
+    transition: transform 0.4s ease, opacity 0.4s ease;
+    transition-delay: 0.1s;
+}
+
+/* Add a subtle fade-in effect when page becomes visible */
+.visible .upload-area, .visible .progress-area, 
+.visible .analyze-btn, .visible .results-placeholder,
+.visible .step {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Stagger the animations for the direction steps */
+.visible .step:nth-child(1) { animation-delay: 0.1s; }
+.visible .step:nth-child(2) { animation-delay: 0.2s; }
+.visible .step:nth-child(3) { animation-delay: 0.3s; }
+.visible .step:nth-child(4) { animation-delay: 0.4s; }
+.visible .step:nth-child(5) { animation-delay: 0.5s; }
+/* Video Preview Section */
+.video-preview-section {
+    flex: 1;
+    min-width: 300px;
+    background: #112240;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+}
+
+.video-container {
+    width: 100%;
+    margin-bottom: 20px;
+    background: #000;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.video-container video {
+    width: 100%;
+    display: block;
+}
+
+.playback-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background: rgba(10, 25, 47, 0.5);
+    border-radius: 8px;
+}
+
+.control-btn {
+    background: #64ffda;
+    color: #0a192f;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.control-btn:hover {
+    background: #0a192f;
+    color: #64ffda;
+    outline: 2px solid #64ffda;
+    transform: scale(1.1);
+}
+
+.timestamp {
+    color: #ccd6f6;
+    font-size: 1.1rem;
+    margin-left: 15px;
+    font-variant-numeric: tabular-nums;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .playback-controls {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    
+    .control-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 1rem;
+    }
+    
+    .timestamp {
+        margin-left: 0;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .app-container {
+        flex-direction: column;
+    }
+}
